@@ -1,0 +1,25 @@
+{
+  "name": "social-webbing",
+  "version": "1.0.0",
+  "description": "Social -Network (NoSQL)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shruthisalimath/Social-webbing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shruthisalimath/Social-webbing/issues"
+  },
+  "homepage": "https://github.com/shruthisalimath/Social-webbing#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1"
+  }
+}
