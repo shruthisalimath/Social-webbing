@@ -1,0 +1,71 @@
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
+
+//create Reaction subdocument schema
+const reactionschema = new Schema (
+    {   
+        //set custom Id to avoid confusion with parent thought _id
+        rectionId: {
+            type: Schema.Types.ObjectId,
+            default: () =>new Types.ObjectId()
+        },
+        reactionBody: {
+            type: String,
+            required: [true, 'Reaction body is mandatory'],
+            maxlength: 280
+        },
+        username: {
+            type: String,
+            required: [true, 'Username is mandatory'],
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (createdAtVal) => dateFormat(createdAtVal)
+        }
+    },
+    {
+        toJSON: {
+            getters: true
+        }
+    }
+);
+
+//schema to create Thought model
+const thoughtSchema = new Schema(
+    {
+        thoughtText: {
+            type: String,
+            required: [true, 'thoughtText is mandatory'],
+            minlength: 1,
+            maxlength: 280
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (createdAtVal) => dateFormat(createdAtVal)
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        reactions: [reactionSchema]
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
+    }
+);
+// get total count of friends
+thoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
+});
+
+// create the Thought model using the ThoughtSchema
+const Thought = model('Thought', thoughtSchema);
+
+// export the Thought model
+module.exports = Thought;
