@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 //create Reaction subdocument schema
-const reactionschema = new Schema (
+const reactionSchema = new Schema (
     {   
         //set custom Id to avoid confusion with parent thought _id
         rectionId: {
@@ -11,12 +11,12 @@ const reactionschema = new Schema (
         },
         reactionBody: {
             type: String,
-            required: [true, 'Reaction body is mandatory'],
+            required: [true, 'Reaction body is required'],
             maxlength: 280
         },
         username: {
             type: String,
-            required: [true, 'Username is mandatory'],
+            required: [true, 'Username is required'],
         },
         createdAt: {
             type: Date,
@@ -36,7 +36,7 @@ const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
-            required: [true, 'thoughtText is mandatory'],
+            required: [true, 'thoughtText is required'],
             minlength: 1,
             maxlength: 280
         },
