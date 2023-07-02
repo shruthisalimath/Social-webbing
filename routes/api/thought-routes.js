@@ -13,8 +13,8 @@ const {
 //set up GET all and post at/api/thoughts
 router.route('/').get(getAllThought).post(createThought);
 
-// set up GET one,PUT and DELETE at api/thoughts/: id
-router.route('/:id').get(getThoughtById).put(updateThought).delete(deleteThought);
+// set up GET one,PUT and DELETE at api/thoughts/: thoughtId
+router.route('/:thoughtId').get(getThoughtById).put(updateThought).delete(deleteThought);
 
 //api/thoughts/:thoughtId/reactions
 router.route('/:thoughtId/reactions').post(addReaction);
