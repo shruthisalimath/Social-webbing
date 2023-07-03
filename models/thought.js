@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+//const dateFormat = require('../utils/dateFormat');
 
 //create Reaction subdocument schema
 const reactionSchema = new Schema (
@@ -21,7 +21,7 @@ const reactionSchema = new Schema (
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (createdAtVal) => dateFormat(createdAtVal)
+            get: (timestamp) => new Date(timestamp).toLocaleString(),
         }
     },
     {
@@ -43,7 +43,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (createdAtVal) => dateFormat(createdAtVal)
+            get: (timestamp) => new Date(timestamp).toLocaleString(),
         },
         username: {
             type: String,
