@@ -5,7 +5,8 @@ module.exports = {
     //get all users
     async getAllUser(req, res) {
         try {
-            const userData = await User.find();
+            const userData = await User.find()
+            .select('-__v')
             res.json(userData);
         } catch (err) {
             //console.log(err);
