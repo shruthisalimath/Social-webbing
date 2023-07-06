@@ -34,13 +34,19 @@ module.exports = {
     // Create a Thought
     async createThought(req, res) {
         try {
-            const thoughtData = await Thought.create(req.body);
-            const userData = await User.findOneAndUpdate(
-                { _id: req.body.userId },
-                { $push: { thoughts: thoughtData._id } },
-                { runValidators: true, new: true }
-            );
-            res.json(thoughtData);
+           // const userDataOriginal = await User.findOne({username: req.body.username});
+           // if(userDataOriginal != null) {
+                const thoughtData = await Thought.create(req.body);
+                const userData = await User.findOneAndUpdate(
+                    //{ _id: userDataOriginal._id },
+                    { _id: req.body.userId },
+                    { $push: { thoughts: thoughtData._id } },
+                    { runValidators: true, new: true }
+                );
+                return res.json(thoughtData);
+            //}
+
+            //return res.status(404).json({"message": "User Not Found"});
         } catch (err) {
             console.log(err);
             res.status(500).json(err);

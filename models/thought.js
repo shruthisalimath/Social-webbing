@@ -5,7 +5,7 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = new Schema (
     {   
         //set custom Id to avoid confusion with parent thought _id
-        rectionId: {
+        reactionId: {
             type: Schema.Types.ObjectId,
             default: () =>new Types.ObjectId()
         },
