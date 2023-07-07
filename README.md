@@ -62,7 +62,7 @@ npm test
 ![Social-Webbing](Assets/Images/Screen_shot-socialNetwork-users.png)
 
 2. GET - Thoughts
-![Social-Webbing](Assets/Images/Screen_Shot-Social network-thoughts.png)
+![Social-Webbing](Assets/Images/Screen_shot-socialNetwork-users.png)
 
 
 ## URL
